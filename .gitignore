@@ -1,5 +1,10 @@
 # for SBT
 /target
 
+# for Eclipse
+.project
+.classpath
+
 # for GitEye
+# (strictly speaking, this is redundant)
 .project
