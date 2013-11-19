@@ -1,0 +1,5 @@
+# for SBT
+/target
+
+# for GitEye
+.project
