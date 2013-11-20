@@ -5,9 +5,13 @@ import scala.reflect.ClassTag
 
 class World(val width: Double, val height: Double) {
   
-  val entities: Map[Int, Entity] = Map()
+  private[this] val _entities: Map[Int, Entity] = Map()
   
   private[this] var entityIdCounter: Int = 0
+  
+  def entities: Iterable[Entity] = _entities.values
+  
+  def entity(id: Int): Option[Entity] = _entities.get(id)
   
   def nextEntityId: Int = {
     entityIdCounter += 1
@@ -15,11 +19,11 @@ class World(val width: Double, val height: Double) {
   }
   
   def add(ent: Entity): Unit = {
-    entities.put(ent.id, ent)
+    _entities.put(ent.id, ent)
   }
   
   def remove(entId: Int): Unit = {
-    entities.remove(entId)
+    _entities.remove(entId)
   }
   
   def remove(ent: Entity): Unit = {
@@ -33,7 +37,7 @@ class World(val width: Double, val height: Double) {
      * http://stackoverflow.com/a/16903706/3008170
      */
     val tag = implicitly[ClassTag[T]]
-    entities.values.collect { case tag(t) => t }
+    _entities.values.collect { case tag(t) => t }
   }
   
 }

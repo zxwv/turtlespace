@@ -24,10 +24,10 @@ class WorldSpec extends BaseSpec {
     world.entities should have size 10
     
     for (ent <- entitiesCreated) {
-      world.entities.get(ent.id).get should be theSameInstanceAs ent
+      world.entity(ent.id).get should be theSameInstanceAs ent
     }
     
-    for (ent <- world.entities.values) {
+    for (ent <- world.entities) {
       entitiesCreated should contain (ent)
     }
   }
@@ -41,7 +41,7 @@ class WorldSpec extends BaseSpec {
   "An Entity" should "reference the World it was created in" in {
     val entity = new Entity(world)
     entity.world should be theSameInstanceAs world
-    world.entities.get(entity.id).get should be theSameInstanceAs entity
+    world.entity(entity.id).get should be theSameInstanceAs entity
   }
   
 }
