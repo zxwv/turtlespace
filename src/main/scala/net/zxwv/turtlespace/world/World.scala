@@ -5,13 +5,20 @@ import scala.reflect.ClassTag
 
 class World(val width: Double, val height: Double) {
   
-  val entities: Map[Long, Entity] = Map()
+  val entities: Map[Int, Entity] = Map()
+  
+  private[this] var entityIdCounter: Int = 0
+  
+  def nextEntityId: Int = {
+    entityIdCounter += 1
+    entityIdCounter
+  }
   
   def add(ent: Entity): Unit = {
     entities.put(ent.id, ent)
   }
   
-  def remove(entId: Long): Unit = {
+  def remove(entId: Int): Unit = {
     entities.remove(entId)
   }
   

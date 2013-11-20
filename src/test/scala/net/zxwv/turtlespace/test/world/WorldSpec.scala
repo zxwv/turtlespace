@@ -32,6 +32,12 @@ class WorldSpec extends BaseSpec {
     }
   }
   
+  it should "produce unique entity ids" in {
+    val entitiesCreated = for (i <- 1 to 10) yield { new Entity(world) }
+    val entityIds = for (e <- entitiesCreated) yield e.id
+    entityIds.toSet should have size (10)
+  }
+  
   "An Entity" should "reference the World it was created in" in {
     val entity = new Entity(world)
     entity.world should be theSameInstanceAs world
