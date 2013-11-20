@@ -4,7 +4,7 @@ import net.zxwv.turtlespace.test.BaseSpec
 
 import scala.collection.mutable.Set
 
-import net.zxwv.turtlespace.util.WithPreAndPost.Wrapper
+import net.zxwv.turtlespace.util.WithPreAndPost.PreAndPostWrapper
 
 class WithPreAndPostSpec extends BaseSpec {
   
