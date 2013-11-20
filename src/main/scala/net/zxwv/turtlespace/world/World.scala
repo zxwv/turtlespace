@@ -18,17 +18,11 @@ class World(val width: Double, val height: Double) {
     entityIdCounter
   }
   
-  def add(ent: Entity): Unit = {
-    _entities.put(ent.id, ent)
-  }
+  def add(ent: Entity): Unit = _entities.put(ent.id, ent)
   
-  def remove(entId: Int): Unit = {
-    _entities.remove(entId)
-  }
+  def remove(entId: Int): Unit = _entities.remove(entId)
   
-  def remove(ent: Entity): Unit = {
-    remove(ent.id)
-  }
+  def remove(ent: Entity): Unit = remove(ent.id)
   
   def entitiesOfType[T <: Entity : ClassTag]: Traversable[T] = {
     /*

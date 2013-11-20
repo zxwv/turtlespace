@@ -22,18 +22,12 @@ class WorldSpec extends BaseSpec {
     val entitiesCreated = for (i <- 1 to 10) yield { new Entity(world) }
     entitiesCreated should have size 10
     world.entities should have size 10
-    
-    for (ent <- entitiesCreated) {
-      world.entity(ent.id).get should be theSameInstanceAs ent
-    }
-    
-    for (ent <- world.entities) {
-      entitiesCreated should contain (ent)
-    }
+    for (ent <- entitiesCreated) world.entity(ent.id).get should be theSameInstanceAs ent
+    for (ent <- world.entities) entitiesCreated should contain (ent)
   }
   
   it should "produce unique entity ids" in {
-    val entitiesCreated = for (i <- 1 to 10) yield { new Entity(world) }
+    val entitiesCreated = for (i <- 1 to 10) yield new Entity(world)
     val entityIds = for (e <- entitiesCreated) yield e.id
     entityIds.toSet should have size (10)
   }

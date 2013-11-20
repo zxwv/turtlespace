@@ -77,18 +77,10 @@ class TurtleSpec extends BaseSpec {
           turtle.y = rand.nextDouble * 10.0
           turtle.angle = rand.nextDouble * 2 * Math.PI
         }
-        case 1 => {
-          turtle.forward(rand.nextDouble * 100)
-        }
-        case 2 => {
-          turtle.back(rand.nextDouble * 100)
-        }
-        case 3 => {
-          turtle.left(rand.nextDouble * 25)
-        }
-        case 4 => {
-          turtle.right(rand.nextDouble * 25)
-        }
+        case 1 => turtle.forward(rand.nextDouble * 100)
+        case 2 => turtle.back(rand.nextDouble * 100)
+        case 3 => turtle.left(rand.nextDouble * 25)
+        case 4 => turtle.right(rand.nextDouble * 25)
       }
       turtle.x should be >= 0.0
       turtle.x should be <= 10.0
