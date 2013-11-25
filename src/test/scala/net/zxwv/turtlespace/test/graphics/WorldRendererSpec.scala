@@ -10,7 +10,7 @@ class WorldRendererSpec extends BaseSpec {
   
   val renderedTurtles: ListBuffer[Turtle] = ListBuffer()
   
-  class FakeRenderer extends WorldRenderer {
+  class FakeRenderer(val world: World) extends WorldRenderer {
     
     override def renderTurtle(turtle: Turtle): Unit = { renderedTurtles += turtle }
     
@@ -18,13 +18,13 @@ class WorldRendererSpec extends BaseSpec {
   
   val world = new World(10.0, 10.0)
   val turtles = for (i <- 1 to 100) yield new Turtle(world)
-  val fakeRenderer = new FakeRenderer
+  val fakeRenderer = new FakeRenderer(world)
   
   behavior of "WorldRenderer"
   
   before {
     renderedTurtles.clear
-    fakeRenderer.renderWorld(world)
+    fakeRenderer.renderWorld
   }
   
   "A fake WorldRenderer" should "render all turtles, in ascending id order" in {
